@@ -11,13 +11,19 @@
     <div id="map" style="z-index:0;"></div>
     <button onclick="zoomIn()"><span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-plus"></span></button>
     <button onclick="zoomOut()"><span style="position:absolute;left:60px;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-minus"></span></button>
+    <button onclick="clickLeft()"><span style="position:absolute;left:0px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-left"></span></button>
+    <button onclick="clickUp()"><span style="position:absolute;left:60px;top:60PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-up"></span></button>
+    <button onclick="clickRight()"><span style="position:absolute;left:120px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-right"></span></button>
+    <button onclick="clickDown()"><span style="position:absolute;left:60px;top:180PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-down"></span></button>
+
 
   </div>
 
     <script type="text/javascript">
 
     var map;
-    var myLoc = {lat: 59.347, lng: 18.072};
+    var lat = 59.347; lng = 18.072;
+    var myLoc = {lat: lat, lng: lng};
     var bLoc = {lat: 59.348, lng: 18.073};
     var zoomValue = 14;
     function initMap() {
@@ -54,6 +60,33 @@
       zoomValue -= 1;
       map.setZoom(zoomValue);
     }
+
+        function clickLeft() {
+      lng -=0.001 * Math.pow(2,14-zoomValue);
+      myLoc = {lat: lat, lng: lng};
+      map.setCenter(myLoc);
+      //console.log(zoomValue);
+    }
+
+    function clickUp() {
+      lat +=0.001 * Math.pow(2,14-zoomValue);
+      myLoc = {lat: lat, lng: lng};
+      map.setCenter(myLoc);
+      //console.log(myLoc);
+    }
+
+    function clickRight() {
+      lng +=0.001 * Math.pow(2,14-zoomValue);
+      myLoc = {lat: lat, lng: lng};
+      map.setCenter(myLoc);
+    }
+
+    function clickDown() {
+      lat -=0.001 * Math.pow(2,14-zoomValue);
+      myLoc = {lat: lat, lng: lng};
+      map.setCenter(myLoc);
+    }
+
 
 
     </script>
