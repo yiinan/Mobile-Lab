@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mob Dev</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; left:0; top:0;}
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div style="position:relative; height:100%;">
+      <div id="map" style="z-index:0;"></div>
+      <button onclick="zoomIn()"><span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-plus"></span></button>
+      <button onclick="zoomOut()"><span style="position:absolute;left:60px;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-minus"></span></button>
+      <button onclick="clickLeft()"><span style="position:absolute;left:0px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-left"></span></button>
+      <button onclick="clickUp()"><span style="position:absolute;left:60px;top:60PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-up"></span></button>
+      <button onclick="clickRight()"><span style="position:absolute;left:120px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-right"></span></button>
+      <button onclick="clickDown()"><span style="position:absolute;left:60px;top:180PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-down"></span></button>
+    </div>
+
+      <script src="js/lab1.js">
+      </script>
+
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEcSCBn5cQ4V5xCTeqSoxupVSOhu2U4Z4&callback=initMap">
+      </script>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
