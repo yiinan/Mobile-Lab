@@ -8,16 +8,17 @@
   </head>
   <body>
   <div style="position:relative; height:100%;">
-    <div id="map" style="z-index:0;"></div> 
+    <div id="map" style="z-index:0;"></div>
     <button onclick="zoomIn()"><span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-plus"></span></button>
     <button onclick="zoomOut()"><span style="position:absolute;left:60px;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-minus"></span></button>
-    
+
   </div>
-    
+
     <script type="text/javascript">
 
     var map;
     var myLoc = {lat: 59.347, lng: 18.072};
+    var bLoc = {lat: 59.348, lng: 18.073};
     var zoomValue = 14;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -31,7 +32,15 @@
       //map.setTilt(45);
       var marker = new google.maps.Marker({
         position: myLoc,
-        map: map
+        draggable: true,
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+
+      var bouncer = new google.maps.Marker({
+        position: bLoc,
+        map: map,
+        animation: google.maps.Animation.BOUNCE
       });
 
     }
