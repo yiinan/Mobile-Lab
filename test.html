@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; left:0; top:0;}
+    </style>
+  </head>
+  <body>
+  <div style="position:relative; height:100%;">
+    <div id="map" style="z-index:0;"></div> 
+    <button onclick="zoomIn()"><span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-plus"></span></button>
+    <button onclick="zoomOut()"><span style="position:absolute;left:60px;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-minus"></span></button>
+    
+  </div>
+    
+    <script type="text/javascript">
+
+    var map;
+    var myLoc = {lat: 59.347, lng: 18.072};
+    var zoomValue = 14;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: myLoc,
+        zoom: zoomValue,
+        //mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        //mapTypeId: google.maps.MapTypeId.HYBRID
+        disableDefaultUI: true
+      });
+      //map.setTilt(45);
+      var marker = new google.maps.Marker({
+        position: myLoc,
+        map: map
+      });
+
+    }
+
+    function zoomIn() {
+      zoomValue += 1;
+      map.setZoom(zoomValue);
+    }
+
+    function zoomOut() {
+      zoomValue -= 1;
+      map.setZoom(zoomValue);
+    }
+
+
+    </script>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEcSCBn5cQ4V5xCTeqSoxupVSOhu2U4Z4&callback=initMap">
+    </script>
+
+  </body>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</html>
