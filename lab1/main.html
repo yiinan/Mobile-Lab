@@ -11,12 +11,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" sizes="192x192" href="img/icon.png">
-
-    <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; left:0; top:0;}
-    </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,16 +22,21 @@
     <![endif]-->
   </head>
   <body>
-    <div style="position:relative; height:100%;">
-      <div id="map" style="z-index:0;"></div>
-      <button onclick="zoomIn()"><span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-plus"></span></button>
-      <button onclick="zoomOut()"><span style="position:absolute;left:60px;top:0; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-minus"></span></button>
-      <button onclick="clickLeft()"><span style="position:absolute;left:0px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-left"></span></button>
-      <button onclick="clickUp()"><span style="position:absolute;left:60px;top:60PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-up"></span></button>
-      <button onclick="clickRight()"><span style="position:absolute;left:120px;top:120PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-right"></span></button>
-      <button onclick="clickDown()"><span style="position:absolute;left:60px;top:180PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-arrow-down"></span></button>
-      <button onclick="toggleFullScreen()"><span style="position:absolute;left:0px;top:240PX; font-size: 50px; border:1px solid black; background:white;" class="glyphicon glyphicon-fullscreen"></button>
+    <div class="mapContainer"> <!-- //style="position:relative; height:90%;" -->
+      <div id="map"></div>      
     </div>
+    <button onclick="zoomIn()" class="glyphicon glyphicon-plus"></button>
+    <button onclick="zoomOut()" class="glyphicon glyphicon-minus"></button>
+    <button onclick="clickLeft()" class="glyphicon glyphicon-arrow-left"></button>
+    <button onclick="clickUp()" class="glyphicon glyphicon-arrow-up"></button>
+    <button onclick="clickRight()" class="glyphicon glyphicon-arrow-right"></button>
+    <button onclick="clickDown()" class="glyphicon glyphicon-arrow-down"></button>
+    <button onclick="toggleFullScreen()" class="glyphicon glyphicon-fullscreen"></button>
+
+   <!--  <span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;"></span> -->
+
+    <p id="demo">click this and get your position：</p>
+    <button onclick="getLocation()">try</button>
 
     <script src="js/lab1.js">
     </script>
