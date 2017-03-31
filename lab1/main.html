@@ -34,13 +34,13 @@
   
     <ul class="favoriteList">
       <span class="glyphicon glyphicon-star"></span>
-      <li><button title="Wulingyuan National Forest, Zhangjiajie, China" onclick="centerWulingyuan()" class="glyphicon glyphicon-plane favoBtn" style="float:left;"></button></li>
+      <li><button title="Wulingyuan National Forest, Zhangjiajie, China" onclick="centerWulingyuan()" class="glyphicon glyphicon-plane favoBtn"></button></li>
       <li><button title="home" onclick="centerLappis()" class="glyphicon glyphicon-home favoBtn"></button></li>
-
+      <li><p id="demo"><button onclick="getLocation()" class="glyphicon glyphicon-map-marker" style="font-size:25px;"></button></p></li>
     </ul>
 
    <!--  <span style="position:absolute;left:0;top:0; font-size: 50px; border:1px solid black; background:white;"></span> -->
-    <p id="demo">click this and get your position：<button onclick="getLocation()">try</button></p>
+    
 
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEcSCBn5cQ4V5xCTeqSoxupVSOhu2U4Z4&callback=initMap">

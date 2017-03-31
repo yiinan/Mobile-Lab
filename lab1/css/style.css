@@ -53,6 +53,7 @@ html, body {
 	list-style: none;
 }
 .favoriteList li{
+	float: left;
 }
 .favoriteList span{
 	color:#FF5D78;
