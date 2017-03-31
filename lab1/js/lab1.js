@@ -60,12 +60,32 @@
           '<h5>my location</h5>'+
           '</div>'
     });
+
+    infowindow2 = new google.maps.InfoWindow({
+      content: '<div>'+
+          '<h5>the place where I live :)</h5>'+
+          '</div>'
+    });
   }
 
 
-      function centerWulingyuan(){
-        map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
-      }
+  function centerWulingyuan(){
+    map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
+  }
+
+  function centerLappis(){
+    myLoc = {lat: 59.369662, lng: 18.063371};
+    map.setCenter(myLoc);
+    var markerLappis = new google.maps.Marker({
+      position: myLoc,
+      draggable: true,
+      map:map,
+      title:"You are here!"
+      });
+    markerLappis.addListener('click', function() {
+      infowindow2.open(map, markerLappis);
+    });
+  }
 
   function zoomIn() {
     zoomValue += 1;
