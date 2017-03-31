@@ -8,6 +8,54 @@ html, body {
 	left:0;
 	top:0;
 }
+.map_btn {
+	position: absolute;
+	z-index: 10;
+	font-size: 50px;
+	color: black; 
+	border:1px solid black; 
+	background-color: rgba(255,255,255,0.8);
+}
+.zoomin {
+	left: 85%;
+	top: 82%;
+}
+.zoomout {
+	left: 85%;
+	top: 89%;	
+}
+.fullscreen {
+	left: 85%;
+	top:72%;
+}
+.left {
+	left:5%;
+	top:82%;
+}
+.up{
+	left:17%;
+	top: 73%;
+}
+.right {
+	left:29%;
+	top:82%;
+}
+.down {
+	left:17%;
+	top:91%;
+}
 .mapContainer{
-	height: 90%;
+	height: 80%;
+	padding: 20px;
+	position:relative;
+}
+.header {
+	width: 100%;
+	height: 120px;
+	background-color: #0A1A30;
+	color: white;
+	font-size:40px;
+	font-family: "Lucida Console";
+	padding-top: 30px;
+	text-align: center;
 }
