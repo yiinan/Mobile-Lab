@@ -1,4 +1,4 @@
-var map;
+      var map;
       var lat = 59.347; lng = 18.072;
       var myLoc = {lat: lat, lng: lng};
       var bLoc = {lat: 59.348, lng: 18.073};
@@ -26,6 +26,10 @@ var map;
           animation: google.maps.Animation.BOUNCE
         });
 
+      }
+
+      function changeCenter(){
+        map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
       }
 
       function zoomIn() {
