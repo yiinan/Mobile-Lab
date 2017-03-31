@@ -1,9 +1,9 @@
-      var map;
-      var lat = 59.347; lng = 18.072;
-      var myLoc = {lat: lat, lng: lng};
-      var bLoc = {lat: 59.348, lng: 18.073};
-      var zoomValue = 14;
-      var infowindow;
+  var map;
+  var lat = 59.347; lng = 18.072;
+  var myLoc = {lat: lat, lng: lng};
+  var bLoc = {lat: 59.348, lng: 18.073};
+  var zoomValue = 14;
+  var infowindow;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: myLoc,
@@ -21,9 +21,33 @@
       animation: google.maps.Animation.DROP
     });
 
-    function centerWulingyuan(){
-      map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
-    }
+    var nationalparkmarker = new google.maps.Marker({
+      position: new google.maps.LatLng(29.338308, 110.531989),
+      draggable: false,
+      map: map,
+      title: 'Wulingyuan'
+    });
+
+    var infoString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">武陵源</h1>'+
+            '<div id="bodyContent">'+ 'Wulingyuan (Chinese: 武陵源) is a scenic and historical site in south-central Chinas' +
+            'Hunan Province. It was inscribed as a UNESCO World Heritage Site in 1992.[1] It is noted for more than 3,000' +
+            'quartzite sandstone pillars and peaks across most of the site, many over 200 metres (660 ft) in height, along' +
+            'with many ravines and gorges with attractive streams, pools, lakes, rivers and waterfalls.[1] It features 40 caves,' +
+            'many with large calcite deposits, and two natural bridges, Xianrenqiao (Bridge of the Immortals) and Tianqiashengkong' +
+            '(Bridge Across the Sky).' +
+            '</div>'+
+            '</div>';
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: infoString
+    });
+
+    nationalparkmarker.addListener('click', function(){
+      infoWindow.open(map,nationalparkmarker);
+    });
 
     var bouncer = new google.maps.Marker({
       position: bLoc,
@@ -37,6 +61,11 @@
           '</div>'
     });
   }
+
+
+      function centerWulingyuan(){
+        map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
+      }
 
   function zoomIn() {
     zoomValue += 1;
