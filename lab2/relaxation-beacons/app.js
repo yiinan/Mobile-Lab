@@ -117,7 +117,7 @@ app.didRangeBeaconsInRegion = function(pluginResult)
 	//console.log('ranged beacon: ' + pageId + ' ' + beacon.proximity)
 
 	// If the beacon is close and represents a new page, then show the page.
-	if ((beacon.proximity == 'ProximityImmediate')
+	if ((beacon.proximity == 'ProximityImmediate' || beacon.proximity == 'ProximityNear')
 		&& app.currentPage == 'page-default')
 	{
 		app.gotoPage(pageId)
