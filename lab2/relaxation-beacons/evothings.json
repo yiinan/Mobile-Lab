@@ -1,3 +1,12 @@
 {
-  "uuid": "a5cbf82b-7328-4fd0-8597-e96eacc05320"
+  "uuid": "bb7ddb7f-6d1d-437a-b19f-a138a3665d7a",
+  "name": "relaxation-beacons",
+  "title": "Lab2",
+  "description": "App oneline description.",
+  "long-description": "App long description.",
+  "version": "",
+  "author-name": "Evothings",
+  "author-email": "build@evothings.com",
+  "author-url": "https://evothings.com",
+  "cordova-id": "com.evothings.samples.relaxation.beacons"
 }
