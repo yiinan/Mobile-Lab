@@ -21,8 +21,8 @@ app.beaconRegions =
 	{
 		id: 'page-face',
 		uuid:'B9407F30-F5F8-466E-AFF9-25556B57FE6D',
-		major: 55605,
-		minor: 58868
+		major: 46146,
+		minor: 34612
 	}
 ]
 
