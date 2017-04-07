@@ -126,7 +126,7 @@ app.didRangeBeaconsInRegion = function(pluginResult)
 
 	// If the beacon represents the current page but is far away,
 	// then show the default page.
-	if ((beacon.proximity == 'ProximityFar' || beacon.proximity == 'ProximityNear')
+	if ((beacon.proximity == 'ProximityFar')
 		&& app.currentPage == pageId)
 	{
 		app.gotoPage('page-default')
