@@ -1,0 +1,15 @@
+{
+  "name": "onsenui",
+  "homepage": "https://github.com/OnsenUI/OnsenUI-dist",
+  "version": "2.2.4",
+  "_release": "2.2.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.4",
+    "commit": "fa9a2131b7dfddae66509887060f6c35dec8437b"
+  },
+  "_source": "https://github.com/OnsenUI/OnsenUI-dist.git",
+  "_target": "^2.2.4",
+  "_originalSource": "onsenui",
+  "_direct": true
+}
