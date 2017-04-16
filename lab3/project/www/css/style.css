@@ -42,4 +42,10 @@
 .abtbtn {
     position: absolute;
     top: 50%;
+    background-color: green;
+    font-size: 30px;
+}
+
+ons-list-item {
+  font-size: 30px;
 }
