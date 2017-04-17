@@ -107,7 +107,7 @@
         <ons-list-header>Completed Relaxations</ons-list-header>
         <ons-list-item>
           <div class="center">
-            Feet
+            Feet Relaxation
           </div>
           <div class="right">
             <ons-switch></ons-switch>
@@ -115,7 +115,7 @@
         </ons-list-item>
         <ons-list-item>
           <div class="center">
-            Shoulder
+            Shoulder Relaxation
           </div>
           <div class="right">
             <ons-switch></ons-switch>
@@ -123,7 +123,7 @@
         </ons-list-item>
         <ons-list-item>
           <div class="center">
-            Face
+            Face Relaxation
           </div>
           <div class="right">
             <ons-switch></ons-switch>
@@ -276,3 +276,4 @@
 
 </body>
 </html>
+
