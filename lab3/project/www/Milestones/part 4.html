@@ -65,6 +65,9 @@
             <ons-list-item onclick="fn.load('home.html')" tappable>
               Home
             </ons-list-item>
+            <ons-list-item onclick="fn.load('settings.html')" tappable>
+              Settings
+            </ons-list-item>
             <ons-list-item onclick="fn.load('about.html')" tappable>
               About
             </ons-list-item>
@@ -88,23 +91,47 @@
   </ons-dialog>
 
   <ons-template id="home.html">
-<!--           <ons-toolbar>
-          <div class="left">
-            <ons-toolbar-button onclick="fn.open()">
-              <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-            </ons-toolbar-button>
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="right">
+          <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      <ons-list>
+        <ons-list-header>Completed Relaxations</ons-list-header>
+        <ons-list-item>
+          <div class="center">
+            Feet Relaxation
           </div>
           <div class="right">
-            <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
+            <ons-switch></ons-switch>
           </div>
-        </ons-toolbar>
- -->   
-  <ons-page>
-      <ons-tabbar>
-        <ons-tab label="Home" page="default.html" active>
-          Home
-        </ons-tab>
+        </ons-list-item>
+        <ons-list-item>
+          <div class="center">
+            Shoulder Relaxation
+          </div>
+          <div class="right">
+            <ons-switch></ons-switch>
+          </div>
+        </ons-list-item>
+        <ons-list-item>
+          <div class="center">
+            Face Relaxation
+          </div>
+          <div class="right">
+            <ons-switch></ons-switch>
+          </div>
+        </ons-list-item>
+      </ons-list>
 
+      <ons-tabbar>
         <ons-tab label="Feet" page="feet.html">
           Feet
         </ons-tab>
@@ -130,35 +157,8 @@
         <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
       </div>
     </ons-toolbar>
-
-<!--       <ons-list>
-        <ons-list-header>Completed Relaxations</ons-list-header>
-        <ons-list-item>
-          <div class="center">
-            Feet
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="center">
-            Shoulder
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="center">
-            Face
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-      </ons-list>
- --><!--     <ons-tabbar>
+    Add something?
+    <ons-tabbar>
             <ons-tab label="Feet" page="feet.html">
               Feet
             </ons-tab>
@@ -169,7 +169,7 @@
               Face
             </ons-tab>
     </ons-tabbar>
- -->  </ons-page>
+  </ons-page>
   </ons-template>
 
   <ons-template id="about.html">
@@ -191,7 +191,7 @@
     <p class="abouttext">
       Created by Mark Hobro and Yinan Xu.
     </p>
-<!--     <ons-tabbar>
+    <ons-tabbar>
             <ons-tab label="Feet" page="feet.html">
               Feet
             </ons-tab>
@@ -202,70 +202,11 @@
               Face
             </ons-tab>
     </ons-tabbar>
- -->  </ons-page>
-</ons-template>
-
-<ons-template id="default.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">Home</div>
-      <div class="right">
-        <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
-      </div>
-    </ons-toolbar>
-
-    <h3 class="abouttext">Relaxation practices!</h3>
-          <ons-list>
-        <ons-list-header>Completed Relaxations</ons-list-header>
-        <ons-list-item>
-          <div class="center">
-            Feet
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="center">
-            Shoulder
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="center">
-            Face
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-      </ons-list>
-
-
   </ons-page>
 </ons-template>
 
   <ons-template id="feet.html">
   <ons-page id="feet">
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">Feet</div>
-        <div class="right">
-          <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
-        </div>
-      </ons-toolbar>
-
     <div class="my-header">
 			<img class="my-header-image" src="photos/photo-feet.jpg" />
 		</div>
@@ -289,18 +230,6 @@
 
 <ons-template id="shoulders.html">
 <ons-page id="shoulders">
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">Shoulders</div>
-        <div class="right">
-          <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
-        </div>
-      </ons-toolbar>
-
   <div class="my-header">
     <img class="my-header-image" src="photos/photo-shoulders-1.jpg" />
   </div>
@@ -321,18 +250,6 @@
 
 <ons-template id="face.html">
 <ons-page id="face">
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">Face</div>
-        <div class="right">
-          <ons-toolbar-button tappable onclick="showDialog('dialog-1')">Button</ons-toolbar-button>
-        </div>
-      </ons-toolbar>
-
   <div class="my-header">
     <img class="my-header-image" src="photos/photo-face.jpg" />
   </div>
@@ -359,3 +276,4 @@
 
 </body>
 </html>
+

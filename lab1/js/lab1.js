@@ -13,7 +13,7 @@
       //mapTypeId: google.maps.MapTypeId.HYBRID
       disableDefaultUI: true
     });
-    //map.setTilt(45);
+    map.setTilt(45);
     var marker = new google.maps.Marker({
       position: myLoc,
       draggable: true,
@@ -70,11 +70,16 @@
 
 
   function centerWulingyuan(){
+    lat = 29.338308;
+    lng = 110.531989;
+    myLoc = {lat: lat, lng: lng};
     map.setCenter(new google.maps.LatLng(29.338308, 110.531989));
   }
 
   function centerLappis(){
-    myLoc = {lat: 59.369662, lng: 18.063371};
+    lat = 59.369662;
+    lng = 18.063371;
+    myLoc = {lat: lat, lng: lng};
     map.setCenter(myLoc);
     var markerLappis = new google.maps.Marker({
       position: myLoc,
