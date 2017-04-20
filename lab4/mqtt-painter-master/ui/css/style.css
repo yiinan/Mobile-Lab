@@ -14,5 +14,6 @@
 }
 #sendBtn{
 	width: 20%;
+	margin-left: 5px;
 	text-align: center;
 }

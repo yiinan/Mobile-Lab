@@ -46,17 +46,17 @@ app.sendMessage = function(){
 	app.sendBtn = document.getElementById("sendBtn");
 	app.inputMsg = document.getElementById("inputMsg");
 	
-	app.sendBtn.addEventListener("click", function(){
-		app.ctx.font = "20px Arial";
-		app.ctx.fillText(app.inputMsg.value, 20,50);
-	});
-
 	// app.sendBtn.addEventListener("click", function(){
-	// 	if (app.connected) {
-	// 		var chat = JSON.stringify({text: app.inputMsg.value})
-	// 		app.publish(chat);
-	// 	}
+	// 	app.ctx.font = "20px Arial";
+	// 	app.ctx.fillText(app.inputMsg.value, 20,50);
 	// });
+
+	app.sendBtn.addEventListener("click", function(){
+		if (app.connected) {
+			var chat = JSON.stringify({text: app.inputMsg.value})
+			app.publish(chat);
+		}
+	});
 
 }
 
@@ -111,7 +111,7 @@ app.setupConnection = function() {
     useSSL: true,
     onSuccess: app.onConnect,
     onFailure: app.onConnectFailure
-  }
+    }
 	app.client.connect(options);
 }
 
@@ -133,13 +133,13 @@ app.unsubscribe = function() {
 
 app.onMessageArrived = function(message) {
 	var o = JSON.parse(message.payloadString);
-	app.ctx.beginPath();
-	app.ctx.moveTo(o.from.x, o.from.y);
-	app.ctx.lineTo(o.to.x, o.to.y);
-	app.ctx.strokeStyle = o.color;
-	app.ctx.stroke();
-	// app.ctx.font = "30px Arial";
-	// app.ctx.fillText(o.text,50,150);
+	// app.ctx.beginPath();
+	// app.ctx.moveTo(o.from.x, o.from.y);
+	// app.ctx.lineTo(o.to.x, o.to.y);
+	// app.ctx.strokeStyle = o.color;
+	// app.ctx.stroke();
+	app.ctx.font = "30px Arial";
+	app.ctx.fillText(o.text,50,150);
 }
 
 app.onConnect = function(context) {

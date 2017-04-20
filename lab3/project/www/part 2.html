@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <ons-tabbar>
+          <ons-tab label="About" page="about.html" active>
+            About
+          </ons-tab>
+          <ons-tab label="Feet" page="feet.html">
+            Feet
+          </ons-tab>
+          <ons-tab label="Shoulders" page="shoulders.html">
+            Shoulders
+          </ons-tab>
+          <ons-tab label="Face" page="face.html">
+            Face
+          </ons-tab>
+  </ons-tabbar>
+
+  <ons-template id="about.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">
+        About
+      </div>
+    </ons-toolbar>
+    <h3 class="abouttext">
+      This webapp is a part of the course DM2518 at KTH.
+    </h3>
+    <p class="abouttext">
+      Created by Mark Hobro and Yinan Xu.
+    </p>
+  </ons-page>
+  </ons-template>
+
+  <ons-template id="feet.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">
+        Feet
+      </div>
+    </ons-toolbar>
+    <div class="my-header">
+			<img class="my-header-image" src="photos/photo-feet.jpg" />
+			<img class="my-icon-back" src="icon-back.png" ontouchend="history.back()" />
+		</div>
+		<div class="my-content">
+			<h1>Feel Your Feet</h1>
+			<ul>
+				<li>Stand on your feet.</li>
+				<li>Experience the contact with the ground.</li>
+				<li>Feel into the soles of the feet.</li>
+				<li>Feel the knees.</li>
+				<li>The hips.</li>
+				<li>The spine.</li>
+				<li>Shoulders.</li>
+				<li>Neck.</li>
+				<li>Head.</li>
+				<li>Feel the connection between the top of the head and the feet.</li>
+			</ul>
+		</div>
+  </ons-page>
+  </ons-template>
+
+
+  <ons-template id="shoulders.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">
+        Shoulders
+      </div>
+    </ons-toolbar>
+    <div class="my-header">
+			<img class="my-header-image" src="photos/photo-shoulders-1.jpg" />
+			<img class="my-icon-back" src="icon-back.png" ontouchend="history.back()" />
+		</div>
+		<div class="my-content">
+			<h1>Feel Your Shoulders</h1>
+			<ul>
+				<li>Let your arms hang loose.</li>
+				<li>Become aware of the shoulders.</li>
+				<li>Slightly lift one shoulder and release it.</li>
+				<li>Let the shoulder come all the way down.</li>
+				<li>Lift the other shoulder and release it.</li>
+				<li>Alternate three more times on each side.</li>
+				<li>Experience the breath flowing in and out of the body.</li>
+			</ul>
+		</div>
+  </ons-page>
+  </ons-template>
+
+
+  <ons-template id="face.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">
+        Face
+      </div>
+    </ons-toolbar>
+    <div class="my-header">
+			<img class="my-header-image" src="photos/photo-face.jpg" />
+			<img class="my-icon-back" src="icon-back.png" ontouchend="history.back()" />
+		</div>
+		<div class="my-content">
+			<h1>Feel Your Face</h1>
+			<ul>
+				<li>Become aware of your face.</li>
+				<li>Feel the forehead.</li>
+				<li>The eyebrows.</li>
+				<li>Eyes.</li>
+				<li>Nose.</li>
+				<li>Nostrils.</li>
+				<li>Air flowing through the nostrils.</li>
+				<li>Cheeks.</li>
+				<li>Jaw.</li>
+				<li>Lips.</li>
+				<li>Tongue.</li>
+				<li>Whole of the head.</li>
+				<li>The space surrounding the head.</li>
+			</ul>
+		</div>
+  </ons-page>
+  </ons-template>
+
+</body>
+</html>
+
