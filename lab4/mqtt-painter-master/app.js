@@ -45,7 +45,7 @@ app.onReady = function() {
 app.sendMessage = function(){
 	app.sendBtn = document.getElementById("sendBtn");
 	app.inputMsg = document.getElementById("inputMsg");
-	
+	app.msgScreen = document.getElementById("msgScreen");
 	// app.sendBtn.addEventListener("click", function(){
 	// 	app.ctx.font = "20px Arial";
 	// 	app.ctx.fillText(app.inputMsg.value, 20,50);
@@ -138,8 +138,14 @@ app.onMessageArrived = function(message) {
 	// app.ctx.lineTo(o.to.x, o.to.y);
 	// app.ctx.strokeStyle = o.color;
 	// app.ctx.stroke();
-	app.ctx.font = "30px Arial";
-	app.ctx.fillText(o.text,50,150);
+	// app.ctx.font = "30px Arial";
+	// app.ctx.fillText(o.text,50,150);
+	if(o.text !== ''){
+		var para = document.createElement("P");
+	    var t = document.createTextNode(o.text);
+	    para.appendChild(t);
+	    app.msgScreen.appendChild(para);
+	}
 }
 
 app.onConnect = function(context) {

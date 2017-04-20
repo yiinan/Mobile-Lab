@@ -17,3 +17,9 @@
 	margin-left: 5px;
 	text-align: center;
 }
+#msgScreen {
+	width: 100%;
+	height: 200px;
+	background: yellow;
+	overflow-y: scroll;
+}
