@@ -35,9 +35,29 @@ app.onReady = function() {
 		app.pubTopic = '/paint/' + device.uuid + '/evt'; // We publish to our own device topic
 		app.subTopic = '/paint/+/evt'; // We subscribe to all devices using "+" wildcard
 		app.setupCanvas();
+		app.sendMessage();
 		app.setupConnection();
 		app.ready = true;
 	}
+
+}
+
+app.sendMessage = function(){
+	app.sendBtn = document.getElementById("sendBtn");
+	app.inputMsg = document.getElementById("inputMsg");
+	
+	app.sendBtn.addEventListener("click", function(){
+		app.ctx.font = "20px Arial";
+		app.ctx.fillText(app.inputMsg.value, 20,50);
+	});
+
+	// app.sendBtn.addEventListener("click", function(){
+	// 	if (app.connected) {
+	// 		var chat = JSON.stringify({text: app.inputMsg.value})
+	// 		app.publish(chat);
+	// 	}
+	// });
+
 }
 
 app.setupCanvas = function() {
@@ -118,6 +138,8 @@ app.onMessageArrived = function(message) {
 	app.ctx.lineTo(o.to.x, o.to.y);
 	app.ctx.strokeStyle = o.color;
 	app.ctx.stroke();
+	// app.ctx.font = "30px Arial";
+	// app.ctx.fillText(o.text,50,150);
 }
 
 app.onConnect = function(context) {

@@ -32,6 +32,7 @@
 	<script src="cordova.js"></script>
 	<script src="app.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="./ui/css/style.css">
 </head>
 
 <body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
@@ -42,7 +43,7 @@
 		<img class="logotype" src="ui/images/logo.svg" alt="Evothings">
 	</header>
 
-	<h1>MQTT Painter</h1>
+	<h1>MQTT Chat Room</h1>
 
 	<p>
 		<span id="info">Not Connected</span>
@@ -51,6 +52,11 @@
 
 	<div class="dummy"></div>
 	<div class="canvas-container"><canvas id="canvas" style="margin: 0px;"></canvas></div>
+
+	<form>
+		<input type="text" id="inputMsg" name="chatMessage">
+		<input type="submit" id="sendBtn" value="send">
+	</form>
 
 	<script>
 		// Make the canvas fill the part of the screen that's not taken up by other elements.
@@ -69,4 +75,5 @@
 
 	<script src="libs/mqttws/mqttws.js"></script>
 	</body>
+
 </html>
