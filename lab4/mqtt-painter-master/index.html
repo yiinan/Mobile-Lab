@@ -50,8 +50,14 @@
 		<button id="connect" onclick="app.setupConnection();">Reconnect</button>
 	</p>
 
+	<div class="nickname">
+		<input id="nickinput" type="text" placeholder="Choose nickname" name="uname" required>
+		<button id="nickbtn" type="submit">Confirm</button>
+	</div>
+
+
 	<div class="dummy"></div>
-	<div class="canvas-container"><canvas id="canvas" style="margin: 0px;"></canvas></div>
+	<div class="canvas-container" style="display: none"><canvas id="canvas" style="margin: 0px;"></canvas></div>
 
 	<div id="msgScreen">
 	...
@@ -60,6 +66,7 @@
 	<input type="text" id="inputMsg" name="chatMessage">
 <!-- 		<input type="submit" id="sendBtn" value="send"> -->
 	<button id="sendBtn">send</button>
+
 
 	<script>
 		// Make the canvas fill the part of the screen that's not taken up by other elements.

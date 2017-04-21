@@ -10,10 +10,9 @@
 #inputMsg {
 	background-color: white;
 	border:1px solid grey;
-	width: 68%;
+	width: 50%;
 }
 #sendBtn{
-	width: 20%;
 	margin-left: 5px;
 	text-align: center;
 }
@@ -22,4 +21,13 @@
 	height: 200px;
 	background: yellow;
 	overflow-y: scroll;
+}
+
+#nickinput {
+	width: 50%;
+}
+
+#nickbtn {
+margin-left: 5px;
+font-size: 15px;
 }

@@ -10,6 +10,8 @@ var port = 8084;
 var user = 'anon';
 var password = 'ymous';
 
+var username = '';
+
 app.connected = false;
 app.ready = false;
 
@@ -46,6 +48,8 @@ app.sendMessage = function(){
 	app.sendBtn = document.getElementById("sendBtn");
 	app.inputMsg = document.getElementById("inputMsg");
 	app.msgScreen = document.getElementById("msgScreen");
+	app.nickbtn = document.getElementById("nickbtn");
+	app.nickinput = document.getElementById("nickinput");
 	// app.sendBtn.addEventListener("click", function(){
 	// 	app.ctx.font = "20px Arial";
 	// 	app.ctx.fillText(app.inputMsg.value, 20,50);
@@ -53,8 +57,14 @@ app.sendMessage = function(){
 
 	app.sendBtn.addEventListener("click", function(){
 		if (app.connected) {
-			var chat = JSON.stringify({text: app.inputMsg.value})
+			var chat = JSON.stringify({nickname: username, text: app.inputMsg.value})
 			app.publish(chat);
+		}
+	});
+
+	app.nickbtn.addEventListener("click", function(){
+		if (app.connected) {
+			username = app.nickinput.value;
 		}
 	});
 
@@ -75,7 +85,7 @@ app.setupCanvas = function() {
 		app.left = totalOffsetX;
 		app.top = totalOffsetY;
 	}
-	
+
 	// We want to remember the beginning of the touch as app.pos
 	canvas.addEventListener("touchstart", function(event) {
 		// Found the following hack to make sure some
@@ -88,7 +98,7 @@ app.setupCanvas = function() {
 		var y = Math.floor(t.clientY) - app.top;
 		app.pos = {x:x, y:y};
 	});
-	
+
 	// Then we publish a line from-to with our color and remember our app.pos
 	canvas.addEventListener("touchmove", function(event) {
 		var t = event.touches[0];
@@ -140,9 +150,12 @@ app.onMessageArrived = function(message) {
 	// app.ctx.stroke();
 	// app.ctx.font = "30px Arial";
 	// app.ctx.fillText(o.text,50,150);
-	if(o.text !== ''){
+	if(o.text !== '' || o.username !== ''){
 		var para = document.createElement("P");
+			var nick = document.createTextNode(o.nickname);
 	    var t = document.createTextNode(o.text);
+			para.appendChild(nick);
+			para.appendChild();
 	    para.appendChild(t);
 	    app.msgScreen.appendChild(para);
 	}
