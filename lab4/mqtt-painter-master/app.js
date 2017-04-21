@@ -155,7 +155,6 @@ app.onMessageArrived = function(message) {
 			var nick = document.createTextNode(o.nickname);
 	    var t = document.createTextNode(o.text);
 			para.appendChild(nick);
-			para.appendChild();
 	    para.appendChild(t);
 	    app.msgScreen.appendChild(para);
 	}
