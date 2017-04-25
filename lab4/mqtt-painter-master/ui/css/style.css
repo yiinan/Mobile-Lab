@@ -21,7 +21,7 @@
 	height: 380px;
 /*	border: 1px solid grey;
 */	background: lightgrey;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #msgScreen div{
@@ -29,6 +29,7 @@
 	padding-left: 2px;
 	color: grey;
 }
+
 #msgScreen p{
 	padding-left: 10px;
 }

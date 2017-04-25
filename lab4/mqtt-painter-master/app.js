@@ -128,6 +128,16 @@ app.setupConnection = function() {
 	app.client.connect(options);
 }
 
+app.disconnect = function() {
+	app.client.disconnect();
+}
+
+app.clearChatBox = function() {
+	var myNode = document.getElementById("msgScreen");
+	myNode.innerHTML = '<div></div>';
+	myNode.style.backgroundColor = 'lightgrey';
+}
+
 app.publish = function(json) {
 	message = new Paho.MQTT.Message(json);
 	message.destinationName = app.pubTopic;
@@ -160,13 +170,14 @@ app.onMessageArrived = function(message) {
 	 //    var nick = document.createTextNode(o.nickname);
 		// text.appendChild(nick);
 		var nick = document.createElement("div");
-		nick.innerHTML = "<div>"+o.nickname+"</div>";	    
+		nick.innerHTML = "<div>"+o.nickname+"</div>";
 	    app.msgScreen.appendChild(nick);
 	    app.msgScreen.appendChild(text);
 	}
 }
 
 app.onConnect = function(context) {
+	app.clearChatBox();
 	app.subscribe();
 	app.status("Connected!");
 	app.connected = true;
@@ -177,7 +188,10 @@ app.onConnectFailure = function(e){
 }
 
 app.onConnectionLost = function(responseObject) {
-	app.status("Connection lost!");
+	var text = document.createElement("P");
+		var t = document.createTextNode("Goodbye!");
+		text.appendChild(t);
+		app.msgScreen.appendChild(text);
 	console.log("Connection lost: "+responseObject.errorMessage);
 	app.connected = false;
 }
