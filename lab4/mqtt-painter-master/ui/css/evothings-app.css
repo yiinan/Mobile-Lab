@@ -766,3 +766,48 @@ input.btn-group.black:checked + label {
 		screen and (orientation: landscape) and (min-device-pixel-ratio : 2) {
 	body { font-size: 4.5vw; }
 }
+
+.chatContainer{
+	background: lightyellow;
+	width: 90%;
+	height: 50%;
+	border: 1px solid black;
+	margin-top: -10px;
+	padding-top: 0;
+}
+
+#inputMsg {
+	background-color: white;
+	border:1px solid grey;
+	width: 60%;
+}
+#sendBtn{
+	margin-left: 5px;
+	text-align: center;
+}
+#msgScreen {
+	width: 100%;
+	height: 380px;
+	border: 1px solid grey;
+	background: lightgrey;
+	overflow-y: scroll;
+}
+
+#msgScreen div{
+	font-size: 16px;
+	padding-left: 2px;
+	color: grey;
+}
+#msgScreen p{
+	padding-left: 10px;
+}
+
+#nickinput {
+	width: 50%;
+}
+
+#nickbtn {
+margin-left: 5px;
+font-size: 15px;
+}
+

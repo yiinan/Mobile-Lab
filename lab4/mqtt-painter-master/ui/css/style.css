@@ -10,17 +10,27 @@
 #inputMsg {
 	background-color: white;
 	border:1px solid grey;
-	width: 50%;
+	width: 60%;
 }
 #sendBtn{
 	margin-left: 5px;
 	text-align: center;
 }
 #msgScreen {
-	width: 100%;
-	height: 200px;
-	background: yellow;
+	width: 50%;
+	height: 380px;
+/*	border: 1px solid grey;
+*/	background: lightgrey;
 	overflow-y: scroll;
+}
+
+#msgScreen div{
+	font-size: 16px;
+	padding-left: 2px;
+	color: grey;
+}
+#msgScreen p{
+	padding-left: 10px;
 }
 
 #nickinput {

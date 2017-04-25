@@ -10,7 +10,7 @@ var port = 8084;
 var user = 'anon';
 var password = 'ymous';
 
-var username = '';
+var username = 'anonymous';
 
 app.connected = false;
 app.ready = false;
@@ -55,16 +55,16 @@ app.sendMessage = function(){
 	// 	app.ctx.fillText(app.inputMsg.value, 20,50);
 	// });
 
+	app.nickbtn.addEventListener("click", function(){
+		if (app.connected) {
+			username = app.nickinput.value;
+		}
+	});
+
 	app.sendBtn.addEventListener("click", function(){
 		if (app.connected) {
 			var chat = JSON.stringify({nickname: username, text: app.inputMsg.value})
 			app.publish(chat);
-		}
-	});
-
-	app.nickbtn.addEventListener("click", function(){
-		if (app.connected) {
-			username = app.nickinput.value;
 		}
 	});
 
@@ -114,13 +114,16 @@ app.setupCanvas = function() {
 
 app.setupConnection = function() {
   app.status("Connecting to " + host + ":" + port + " as " + device.uuid);
+  	var last_will = new Paho.MQTT.Message("last message");
+  	last_will.destinationName = "Bridge123";
 	app.client = new Paho.MQTT.Client(host, port, device.uuid);
 	app.client.onConnectionLost = app.onConnectionLost;
 	app.client.onMessageArrived = app.onMessageArrived;
 	var options = {
     useSSL: true,
     onSuccess: app.onConnect,
-    onFailure: app.onConnectFailure
+    onFailure: app.onConnectFailure,
+    willMessage:last_will
     }
 	app.client.connect(options);
 }
@@ -150,13 +153,16 @@ app.onMessageArrived = function(message) {
 	// app.ctx.stroke();
 	// app.ctx.font = "30px Arial";
 	// app.ctx.fillText(o.text,50,150);
-	if(o.text !== '' || o.username !== ''){
-		var para = document.createElement("P");
-			var nick = document.createTextNode(o.nickname);
+	if(typeof o.text !== 'undefined'){
+		var text = document.createElement("P");
 	    var t = document.createTextNode(o.text);
-			para.appendChild(nick);
-	    para.appendChild(t);
-	    app.msgScreen.appendChild(para);
+	    text.appendChild(t);
+	 //    var nick = document.createTextNode(o.nickname);
+		// text.appendChild(nick);
+		var nick = document.createElement("div");
+		nick.innerHTML = "<div>"+o.nickname+"</div>";	    
+	    app.msgScreen.appendChild(nick);
+	    app.msgScreen.appendChild(text);
 	}
 }
 
