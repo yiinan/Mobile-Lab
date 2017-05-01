@@ -137,7 +137,7 @@
         + '</div>'
 
         for(key in sensor.fullData){
-          html = html 
+          html = html
           + '<div class="col-4-1"> ' + ellipsify(sensor.fullData[key].timestamp) + '</div>'
           + '<div class="col-4-1"> ' + sensor.fullData[key].c + ' ppm</div>'
           + '<div class="col-4-1"> ' + sensor.fullData[key].t + ' celcius</div>'
@@ -152,43 +152,50 @@
         + '<img src="' + sensor.image + '" />'
       }
       document.getElementById("printHere").innerHTML= html;
+    }
+    google.charts.load('current', {'packages':['corechart']});
+    //google.charts.setOnLoadCallback(drawChart);
 
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Temp');
+
+      // for(key in sensor.fullData){
+      //   data.addRows([sensor.fullData[key].timestamp, sensor.fullData[key].c]);
+      // }
+
+      var arr = [];
+      var i = 0;
+      for(key in sensor.fullData){
+        arr.push('[Hej,'+sensor.fullData[key].t+']')
+        i++;
+      }
+      data.addRows(arr);
+
+  /*    data.addRows([
+        ['Work', 11],
+        ['Eat', 2],
+        ['Commute', 2],
+        ['Watch TV', 2],
+        ['Sleep', {v:7, f:'7.000'}]
+      ]);
+  */
+      var options = {
+        title: 'Dome data',
+        hAxis: {title: 'Time', minValue: 0, maxValue: 10},
+        vAxis: {title: 'Temperature', minValue: 0, maxValue: 50},
+        //curveType: 'function',
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
     }
 
-      google.charts.load('current', {'packages':['corechart']});
-      //google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Time');
-        data.addColumn('number', 'CO2');
-        
-        // for(key in sensor.fullData){
-        //   data.addRows([sensor.fullData[key].timestamp, sensor.fullData[key].c]);
-        // }
-
-        data.addRows([
-          ['Work', 11],
-          ['Eat', 2],
-          ['Commute', 2],
-          ['Watch TV', 2],
-          ['Sleep', {v:7, f:'7.000'}]
-        ]);
-
-        var options = {
-          title: 'Company Performance',
-          //curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-      }
-
-      function showChart() {
-        google.charts.setOnLoadCallback(drawChart);
-      }
+    function showChart() {
+      google.charts.setOnLoadCallback(drawChart);
+    }
 
 
 
