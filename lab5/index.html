@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./Getting some data from a json API_files/jquery.mobile-1.4.5.css">
   <script src="./Getting some data from a json API_files/jquery-2.1.1.min.js"></script>
   <script src="./Getting some data from a json API_files/jquery.mobile-1.4.5.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <!-- This script, cordova.js,  is built into Evothings Viewer (i.e. you won't need to add this file to your project) The idea is to pick up a http resource, even if you're using https, which would normally create a cross-protocol violation. The HTTP plug-in from Apache Cordova allows this to be carried out, see especially this post: https://evothings.com/evothings-secured-now-serving-over-https/ -->
 
@@ -57,10 +58,6 @@
 
   // A bitmap image describing where the sensor is located
   sensor.image = "https://evothings.com/demos/dome_pics/IMG_1758.JPG";
-
-  // google.charts.load('current', {'packages':['corechart']});
-  // google.charts.setOnLoadCallback(drawChart);
-
 
   // Function to retrieve data, placing it in a "response" object
   function getJSON()
@@ -158,6 +155,43 @@
 
     }
 
+      google.charts.load('current', {'packages':['corechart']});
+      //google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Time');
+        data.addColumn('number', 'CO2');
+        
+        // for(key in sensor.fullData){
+        //   data.addRows([sensor.fullData[key].timestamp, sensor.fullData[key].c]);
+        // }
+
+        data.addRows([
+          ['Work', 11],
+          ['Eat', 2],
+          ['Commute', 2],
+          ['Watch TV', 2],
+          ['Sleep', {v:7, f:'7.000'}]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          //curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+      function showChart() {
+        google.charts.setOnLoadCallback(drawChart);
+      }
+
+
+
     </script>
 
     <button onclick="history.back()" class=" ui-btn ui-shadow ui-corner-all">Exit</button><br>
@@ -165,6 +199,9 @@
     <button onclick="getJSON();" class=" ui-btn ui-shadow ui-corner-all">Retrieve data from sensor2</button>
 
     <div id="printHere"></div>
+
+    <button onclick="showChart();">Show Chart</button>
+    <div id="chart_div"></div>
 
 </div>
 
