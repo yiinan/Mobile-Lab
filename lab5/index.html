@@ -19,11 +19,31 @@
   // Redirect console.log to Evothings Workbench, so you can see data under 'Tools'
   if (window.hyper && window.hyper.log) { hyper.log = console.log }
   </script>
+
+  <style type="text/css">
+    .row {
+      width: 100%;
+    }
+    .col-4-1 {
+      width: 25%;
+      float: left;
+    }
+    .chart {
+      background: white;
+      width: 300px;
+      height: 100px;
+      border-left: 1px dotted #555;
+      border-bottom: 1px dotted #555;
+    }
+
+  </style>
 </head>
 
 
 
-<body class="ui-mobile-viewport ui-overlay-a"><div data-role="page" data-url="/demos/dome_pics/index.html" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" style="min-height: 966px;">
+<body class="ui-mobile-viewport ui-overlay-a">
+
+<div data-role="page" data-url="/demos/dome_pics/index.html" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" style="min-height: 966px;">
   <script>
 
   // Create an empty sensor object as a global
@@ -37,6 +57,9 @@
 
   // A bitmap image describing where the sensor is located
   sensor.image = "https://evothings.com/demos/dome_pics/IMG_1758.JPG";
+
+  // google.charts.load('current', {'packages':['corechart']});
+  // google.charts.setOnLoadCallback(drawChart);
 
 
   // Function to retrieve data, placing it in a "response" object
@@ -53,6 +76,7 @@
           {
             sensor.data = JSON.parse(response.data)[0];
             sensor.fullData = JSON.parse(response.data);
+            hyper.log(response.data);
             printData();
           }
         },
@@ -86,17 +110,43 @@
       }
     }
 
+    function ellipsify (str) {
+        if (str.length > 10) {
+            return (str.substring(11, 19));
+        }
+        else {
+            return str;
+        }
+    }
 
     function printData()
     {
       if (sensor && sensor.data)
       {
         // Display the info.
-        html = '<h1>Sensor Data</h1>'
-        + '<br /><div id="time">Time  ' + sensor.data.timestamp + '</div>'
-        + '<div id="hum">Humidity ' + sensor.data.h + ' % (rel)</div>'
-        + '<div id="temp">Temperature ' + sensor.data.t + ' celcius</div>'
-        + '<img src="' + sensor.image + '" />'
+        // html = '<h1>Sensor Data</h1>'
+        // + '<br /><div id="time">Time  ' + sensor.fullData[2].timestamp + '</div>'
+        // + '<div id="hum">Humidity ' + sensor.fullData[2].h + ' % (rel)</div>'
+        // + '<div id="temp">Temperature ' + sensor.fullData[2].t + ' celcius</div>'
+        // + '<img src="' + sensor.image + '" />'
+
+        html = '<h1>Dome #2</h1>'
+        + '<div style="width100%; height:200px; overflow:hidden;"><img style="width:100%;" src="' + sensor.image + '" /></div>'
+        + '<div class="row"> '
+        + '<div class="col-4-1"> Time </div>'
+        + '<div class="col-4-1"> CO2 </div>'
+        + '<div class="col-4-1"> Temperature </div>'
+        + '<div class="col-4-1"> Lumination </div>'
+        + '</div>'
+
+        for(key in sensor.fullData){
+          html = html 
+          + '<div class="col-4-1"> ' + ellipsify(sensor.fullData[key].timestamp) + '</div>'
+          + '<div class="col-4-1"> ' + sensor.fullData[key].c + ' ppm</div>'
+          + '<div class="col-4-1"> ' + sensor.fullData[key].t + ' celcius</div>'
+          + '<div class="col-4-1"> ' + sensor.fullData[key].l + ' lux</div>'
+        }
+
       }
       else
       {
@@ -105,14 +155,25 @@
         + '<img src="' + sensor.image + '" />'
       }
       document.getElementById("printHere").innerHTML= html;
+
     }
 
+    </script>
 
-    </script><button onclick="history.back()" class=" ui-btn ui-shadow ui-corner-all">Exit</button><br>
+    <button onclick="history.back()" class=" ui-btn ui-shadow ui-corner-all">Exit</button><br>
 
-    <button onclick="getJSON();" class=" ui-btn ui-shadow ui-corner-all">Retrieve some sensor data</button>
+    <button onclick="getJSON();" class=" ui-btn ui-shadow ui-corner-all">Retrieve data from sensor2</button>
+
     <div id="printHere"></div>
 
+</div>
+
+    <div class="ui-loader ui-corner-all ui-body-a ui-loader-default">
+    <span class="ui-icon-loading"></span>
+    <h1>loading</h1>
+    </div>
+
+</body>
 
 
-  </div><div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div></body></html>
+</html>
