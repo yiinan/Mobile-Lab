@@ -114,8 +114,9 @@ app.setupCanvas = function() {
 
 app.setupConnection = function() {
   app.status("Connecting to " + host + ":" + port + " as " + device.uuid);
-  	var last_will = new Paho.MQTT.Message("last message");
-  	last_will.destinationName = "Bridge123";
+	var a = JSON.stringify({nickname: username, text: "Bye!"});
+	var last_will = new Paho.MQTT.Message(a);
+	last_will.destinationName = app.pubTopic;
 	app.client = new Paho.MQTT.Client(host, port, device.uuid);
 	app.client.onConnectionLost = app.onConnectionLost;
 	app.client.onMessageArrived = app.onMessageArrived;
@@ -123,8 +124,13 @@ app.setupConnection = function() {
     useSSL: true,
     onSuccess: app.onConnect,
     onFailure: app.onConnectFailure,
-    // willMessage:last_will
-    willMessage:app.lastWill(last_will)
+// <<<<<<< HEAD
+//     // willMessage:last_will
+//     willMessage:app.lastWill(last_will)
+// =======
+    willMessage: last_will,
+		keepAliveInterval: 5
+// >>>>>>> origin/master
     }
 	app.client.connect(options);
 }
@@ -143,6 +149,7 @@ app.clearChatBox = function() {
 app.publish = function(json) {
 	message = new Paho.MQTT.Message(json);
 	message.destinationName = app.pubTopic;
+	message.qos = 2;
 	app.client.send(message);
 };
 
@@ -188,7 +195,7 @@ app.onConnect = function(context) {
 app.lastWill = function(last_will){
 	var last = document.createElement("P");
 	last.innerHTML = last_will.destinationName;
-	app.msgScreen.appendChild(text);
+	app.msgScreen.appendChild(last);
 }
 
 app.onConnectFailure = function(e){
