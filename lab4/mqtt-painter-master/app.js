@@ -123,13 +123,15 @@ app.setupConnection = function() {
     useSSL: true,
     onSuccess: app.onConnect,
     onFailure: app.onConnectFailure,
-    willMessage:last_will
+    // willMessage:last_will
+    willMessage:app.lastWill(last_will)
     }
 	app.client.connect(options);
 }
 
 app.disconnect = function() {
 	app.client.disconnect();
+	app.status("Disconnected!");
 }
 
 app.clearChatBox = function() {
@@ -181,6 +183,12 @@ app.onConnect = function(context) {
 	app.subscribe();
 	app.status("Connected!");
 	app.connected = true;
+}
+
+app.lastWill = function(last_will){
+	var last = document.createElement("P");
+	last.innerHTML = last_will.destinationName;
+	app.msgScreen.appendChild(text);
 }
 
 app.onConnectFailure = function(e){

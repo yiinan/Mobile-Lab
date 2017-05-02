@@ -7,9 +7,7 @@
   shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
   <title>Getting some data from a json API</title>
-  <link rel="stylesheet" href="./Getting some data from a json API_files/jquery.mobile-1.4.5.css">
-  <script src="./Getting some data from a json API_files/jquery-2.1.1.min.js"></script>
-  <script src="./Getting some data from a json API_files/jquery.mobile-1.4.5.js"></script>
+  <script src="lib/jquery.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <!-- This script, cordova.js,  is built into Evothings Viewer (i.e. you won't need to add this file to your project) The idea is to pick up a http resource, even if you're using https, which would normally create a cross-protocol violation. The HTTP plug-in from Apache Cordova allows this to be carried out, see especially this post: https://evothings.com/evothings-secured-now-serving-over-https/ -->
@@ -18,7 +16,7 @@
 
   <script>
   // Redirect console.log to Evothings Workbench, so you can see data under 'Tools'
-  if (window.hyper && window.hyper.log) { hyper.log = console.log }
+  if (window.hyper && window.hyper.log) { console.log = hyper.log }
   </script>
 
   <style type="text/css">
@@ -64,7 +62,7 @@
   {
     if (window.cordova)
     {
-      hyper.log('Using Apache Cordova HTTP GET function');
+      console.log('Using Apache Cordova HTTP GET function');
       cordovaHTTP.get(
         mSensorDataURL + sensor.key + '.json?limit=50&gt[timestamp]=now-1day&page=1',
         function (response)
@@ -73,18 +71,18 @@
           {
             sensor.data = JSON.parse(response.data)[0];
             sensor.fullData = JSON.parse(response.data);
-            hyper.log(response.data);
+            console.log(response.data);
             printData();
           }
         },
         function (error)
         {
-          hyper.log(JSON.stringify(error));
+          console.log(JSON.stringify(error));
         });
       }
       else
       {
-        hyper.log('Not using Cordova, fallback to AJAX via jquery');
+        console.log('Not using Cordova, fallback to AJAX via jquery');
         $.ajax({
           url: mSensorDataURL + sensor.key + ".json?limit=50&gt[timestamp]=now- 1day",
           jsonp: "callback",
@@ -162,29 +160,34 @@
       data.addColumn('number', 'Temp');
 
       // for(key in sensor.fullData){
-      //   data.addRows([sensor.fullData[key].timestamp, sensor.fullData[key].c]);
+      //   data.addRows([sensor.fullData[key].timestamp, parseFloat(sensor.fullData[key].c)]);
       // }
-
+      // console.log(data);
       var arr = [];
       var i = 0;
       for(key in sensor.fullData){
-        arr.push('[Hej,'+sensor.fullData[key].t+']')
+        var tmp = [];
+        tmp[0] = "Hej";
+        tmp[1] = parseFloat(sensor.fullData[key].t);
+        arr.push(tmp);
+        //console.log(sensor.fullData[key]);
         i++;
       }
       data.addRows(arr);
+      console.log(arr);
 
-  /*    data.addRows([
-        ['Work', 11],
-        ['Eat', 2],
-        ['Commute', 2],
-        ['Watch TV', 2],
-        ['Sleep', {v:7, f:'7.000'}]
-      ]);
-  */
+      // data.addRows([
+      //   ['Work', 11],
+      //   ['Eat', 2],
+      //   ['Commute', 2],
+      //   ['Watch TV', 2],
+      //   ['Sleep', {v:7, f:'7.000'}]
+      // ]);
+  
       var options = {
         title: 'Dome data',
         hAxis: {title: 'Time', minValue: 0, maxValue: 10},
-        vAxis: {title: 'Temperature', minValue: 0, maxValue: 50},
+        vAxis: {title: 'Temperature', minValue: 29, maxValue: 33},
         //curveType: 'function',
       };
 
