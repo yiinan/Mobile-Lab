@@ -159,22 +159,46 @@
       data.addColumn('string', 'Time');
       data.addColumn('number', 'Temp');
 
+      var data_co2 = new google.visualization.DataTable();
+      data_co2.addColumn('string', 'Time');
+      data_co2.addColumn('number', 'CO2');
+
+      var data3 = new google.visualization.DataTable();
+      data3.addColumn('string', 'Time');
+      data3.addColumn('number', 'Lumination');
+
       // for(key in sensor.fullData){
       //   data.addRows([sensor.fullData[key].timestamp, parseFloat(sensor.fullData[key].c)]);
       // }
       // console.log(data);
       var arr = [];
+      var arr2 = [];
+      var arr3 = [];
       var i = 0;
       for(key in sensor.fullData){
         var tmp = [];
-        tmp[0] = "Hej";
+        tmp[0] = ellipsify(sensor.fullData[key].timestamp);
         tmp[1] = parseFloat(sensor.fullData[key].t);
         arr.push(tmp);
+
+        var co2 = [];
+        co2[0] = ellipsify(sensor.fullData[key].timestamp);
+        co2[1] = parseFloat(sensor.fullData[key].c);
+        arr2.push(co2);
+
+        var lum = [];
+        lum[0] = ellipsify(sensor.fullData[key].timestamp);
+        lum[1] = parseFloat(sensor.fullData[key].l);
+        arr3.push(lum);
+
         //console.log(sensor.fullData[key]);
         i++;
       }
       data.addRows(arr);
-      console.log(arr);
+      data_co2.addRows(arr2);
+      data3.addRows(arr3);
+
+      //console.log(arr);
 
       // data.addRows([
       //   ['Work', 11],
@@ -185,15 +209,32 @@
       // ]);
   
       var options = {
-        title: 'Dome data',
+        title: 'Temperature',
         hAxis: {title: 'Time', minValue: 0, maxValue: 10},
-        vAxis: {title: 'Temperature', minValue: 29, maxValue: 33},
+        vAxis: {title: 'Temperature', minValue: 23, maxValue: 25},
+        //curveType: 'function',
+      };
+      var options2 = {
+        title: 'CO2',
+        hAxis: {title: 'Time', minValue: 0, maxValue: 10},
+        vAxis: {title: 'CO2', minValue: 440, maxValue: 470},
+        //curveType: 'function',
+      };
+      var options3 = {
+        title: 'Lumination',
+        hAxis: {title: 'Time', minValue: 0, maxValue: 10},
+        vAxis: {title: 'lux', minValue: 0.6, maxValue: 1.1},
         //curveType: 'function',
       };
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div_temp'));
+      var chart2 = new google.visualization.LineChart(document.getElementById('chart_div_co2'));
+      var chart3 = new google.visualization.LineChart(document.getElementById('chart_div_lum'));
 
       chart.draw(data, options);
+      chart2.draw(data_co2, options2);
+      chart3.draw(data3, options3);
     }
 
     function showChart() {
@@ -211,7 +252,9 @@
     <div id="printHere"></div>
 
     <button onclick="showChart();">Show Chart</button>
-    <div id="chart_div"></div>
+    <div id="chart_div_temp"></div>
+    <div id="chart_div_co2"></div>
+    <div id="chart_div_lum"></div>
 
 </div>
 
